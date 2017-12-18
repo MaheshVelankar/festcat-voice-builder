@@ -135,7 +135,7 @@ configure_HTS: download_HTS download_HDecode download_HTS
 		mv HTS-2.3_for_HTK-3.4.1.patch ../hts && \
 		cd ../hts && \
 		patch -p1 -d . < HTS-2.3_for_HTK-3.4.1.patch && \
-		./configure --enable-hdecode CFLAGS="-fopenmp" --prefix=$(toolsdir) && \
+		./configure --enable-hdecode CFLAGS="-fopenmp -DARCH=linux" --prefix=$(toolsdir) && \
 		make all && \
 		make install; \
 	fi
