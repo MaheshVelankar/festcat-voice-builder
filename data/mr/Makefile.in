@@ -12,6 +12,7 @@ LANG = "mr"
 DATASET = "man_mh"
 
 SPEAKERPROPERTIES = "@top_srcdir@/data/$(LANG)/speakerprop.sh"
+stagedir = "@top_srcdir@/stage"
 
 SOX = @SOX@
 
@@ -82,6 +83,9 @@ $(download_all):
 	$(eval DATASET := "man_mh")
 	# speakerprop.sh has some environment variables that are passed to the configure script \
 	. $(SPEAKERPROPERTIES) $(SPK) && \
+                    echo "speaker set = $SPK" && \
+                    echo "speaker set = $$SPK" && \
+                    echo "speaker set = $(SPK)" && \
 	# If the workdir is not properly setup: \
 	if test ! -f $(workdir)/$*/hts/configure.ac  -o  ! -d $(workdir)/$*/hts/data/utts/  -o ! "`ls -A $(workdir)/$*/hts/data/utts/`"  ; then \
 		# delete the workdir and re-create it. \
@@ -103,11 +107,11 @@ $(download_all):
 		done; \
 		# Create a directory to store the raw and utt files \
 		mkdir -p $(workdir)/$*/hts/data/raw $(workdir)/$*/hts/data/utts && \
-                    cp "$(workdir)/stage/$*/raw"/*.raw "$(workdir)/$*/hts/data/raw/" && \
+                    cp "$(stagedir)/$*/raw"/*.raw "$(workdir)/$*/hts/data/raw/" && \
                     newname="$(DATASET)_$(SPK)_" && \
                     echo "newname= $$newname" && \
                     rename "s/text/$${newname}/" "$(workdir)/$*/hts/data/raw"/*.raw && \
-                    cp "$(workdir)/stage/$*/utts"/*.utt "$(workdir)/$*/hts/data/utts/" && \
+                    cp "$(stagedir)/$*/utts"/*.utt "$(workdir)/$*/hts/data/utts/" && \
                     rename "s/text/$${newname}/" "$(workdir)/$*/hts/data/utts"/*.utt && \
 #		if test  ! -d $(datdir)/$(LANG)/$*/$(DATASET)_$(SPK)_arctic/   -o   ! -f $(datdir)/$(LANG)/$*/$(DATASET)_$(SPK)_arctic/raw/*.raw  ; then \
 #			tar xjf $(datdir)/$(LANG)/$*/$(DATASET)_$(SPK)_arctic.tar.bz2 -C $(datdir)/$(LANG)/$*/; \
