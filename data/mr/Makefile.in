@@ -1,9 +1,12 @@
 #!/usr/bin/make
 # @configure_input@
 
+SHELL := /bin/bash
+
 # Basic needed directories.
 depsdir = @PWD@/deps
-toolsdir = @PWD@/tools
+#toolsdir = @PWD@/tools
+toolsdir = /home/velama02/tools
 workdir = @WORKDIR@
 datdir = @PWD@/data
 srcdatdir = "@top_srcdir@/data"
@@ -34,8 +37,10 @@ festlex_poslex_URL = http://festvox.org/packed/festival/2.4/festlex_POSLEX.tar.g
 
 
 # These variables are set up to ease my life later and download and install both the festlex_cmu and festlex_poslex easily
-ALLDOWNLOADS = festlex_cmu festlex_poslex
-ALLCONFIGURES = festlex_cmu festlex_poslex
+#ALLDOWNLOADS = festlex_cmu festlex_poslex
+#ALLCONFIGURES = festlex_cmu festlex_poslex
+ALLDOWNLOADS = 
+ALLCONFIGURES = 
 download_all = $(addprefix download_,$(ALLDOWNLOADS)) 
 configure_all = $(addprefix configure_,$(ALLCONFIGURES)) 
 

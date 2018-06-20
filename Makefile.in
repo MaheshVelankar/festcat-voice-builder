@@ -1,5 +1,7 @@
 #!/usr/bin/make
 # @configure_input@
+#
+SHELL := /bin/bash
 
 # Package-related substitution variables
 package        = @PACKAGE_NAME@
@@ -13,7 +15,8 @@ exec_prefix    = @exec_prefix@
 bindir         = @bindir@
 
 depsdir = @PWD@/deps
-toolsdir = @PWD@/tools
+#toolsdir = @PWD@/tools
+toolsdir = /home/velama02/tools
 workdir = @WORKDIR@
 datdir = @PWD@/data
 resultsdir = @PWD@/results

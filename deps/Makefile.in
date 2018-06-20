@@ -1,7 +1,8 @@
 #!/usr/bin/make
 # @configure_input@
 
-toolsdir = @PWD@/tools
+#toolsdir = @PWD@/tools
+toolsdir = /home/velama02/tools
 
 WGET = @WGET@
 
@@ -59,8 +60,10 @@ HDecode_USER = @htk_user@
 HDecode_PASSWORD = @htk_password@
 
 
-ALLDOWNLOADS = Festival SpeechTools SPTK htsengine HTS HTK HDecode
-ALLCONFIGURES = Festival SpeechTools SPTK htsengine HTS
+#ALLDOWNLOADS = Festival SpeechTools SPTK htsengine HTS HTK HDecode
+ALLDOWNLOADS = SPTK htsengine HTS HTK HDecode
+#ALLCONFIGURES = Festival SpeechTools SPTK htsengine HTS
+ALLCONFIGURES = SPTK htsengine HTS
 download_all = $(addprefix download_,$(ALLDOWNLOADS)) 
 configure_all = $(addprefix configure_,$(ALLCONFIGURES)) 
 
